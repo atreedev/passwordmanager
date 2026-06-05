@@ -1,0 +1,16 @@
+
+venv/
+.venv/
+data/
+*.enc
+*.db
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.env
+desktop.ini
