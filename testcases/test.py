@@ -64,3 +64,30 @@ print("PASS: list_entries excludes sentinel")
 delete_entry(vault_dir, "gmail")
 assert not (vault_dir / "gmail.enc").exists()
 print("PASS: delete entry works")
+
+from core.auth import (
+    init_db, is_first_launch, set_manager_pin,
+    verify_manager_pin, set_salts, get_salts
+)
+
+print("\n--- Auth Tests ---")
+
+init_db()
+print("PASS: DB initialized")
+
+assert is_first_launch() == True
+print("PASS: first launch detected correctly")
+
+set_manager_pin("5678")
+assert is_first_launch() == False
+print("PASS: first launch false after PIN set")
+
+assert verify_manager_pin("5678") == True
+assert verify_manager_pin("0000") == False
+print("PASS: manager PIN verify correct")
+
+set_salts(vault_salt, decoy_salt)
+vs, ds = get_salts()
+assert vs == vault_salt
+assert ds == decoy_salt
+print("PASS: salts stored and retrieved correctly")
