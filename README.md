@@ -38,10 +38,15 @@ Setup
 Requirements: Python 3.10+, Windows
 
 git clone https://github.com/atreedev/passwordmanager.git
+
 cd passwordmanager
+
 python -m venv venv
+
 venv\Scripts\activate
+
 pip install -r requirements.txt
+
 python main.py
 
 First Launch
@@ -59,19 +64,21 @@ Delete - Type service name, click delete
 
 Project Structure
 
+```
 ├── core/
-│ ├── crypto.py AES-256-GCM encrypt/decrypt, Argon2 key derivation
-│ ├── vault.py File I/O, dual vault routing, sentinel logic
-│ └── auth.py Master PIN hashing, salt storage, config DB
+│   ├── crypto.py        AES-256-GCM encrypt/decrypt, Argon2 key derivation
+│   ├── vault.py         File I/O, dual vault routing, sentinel logic
+│   └── auth.py          Master PIN hashing, salt storage, config DB
 ├── ui/
-│ ├── app.py Main window, screen switching
-│ └── screens/
-│ ├── login.py 2-step auth + first launch setup
-│ └── dashboard.py
-├── data/ gitignored — encrypted files live here
+│   ├── app.py           Main window, screen switching
+│   └── screens/
+│       ├── login.py     2-step auth + first launch setup
+│       └── dashboard.py Add, reveal, copy, delete
+├── data/                gitignored — encrypted files live here
 ├── testcases/
-│ └── test.py testcases
+│   └── test.py          Crypto and vault unit tests
 └── main.py
+```
 
 Limitations
 
