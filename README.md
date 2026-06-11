@@ -13,15 +13,18 @@ An attacker who forces you to unlock sees nothing real.
 **Security Architecture**
 
 Encryption
+
 Algorithm: AES-256-GCM with a unique nonce per entry
 Key derivation: Argon2id (time=3, memory=64MB, parallelism=4)
 The decryption key is never stored — derived fresh each session and wiped on close
 
 Authentication
+
 Master PIN hashed with bcrypt and stored in config.db
 Argon2 salts stored separately per vault — useless without the PIN
 
 Plausible Deniability (Dual Vault)
+
 Two vaults: data/vault/ (real) and data/decoy/ (fake)
 Each vault has a sentinel file encrypted with its respective key
 On login, the app silently checks which vault the entered key unlocks
