@@ -35,20 +35,15 @@ UI - customtkinter
 Clipboard - pyperclip
 
 Setup
+```
 Requirements: Python 3.10+, Windows
-
 git clone https://github.com/atreedev/passwordmanager.git
-
 cd passwordmanager
-
 python -m venv venv
-
 venv\Scripts\activate
-
 pip install -r requirements.txt
-
 python main.py
-
+```
 First Launch
 These are set once and cannot be recovered if forgotten.
 
